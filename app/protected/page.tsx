@@ -25,68 +25,6 @@ export default function Home() {
   useEffect(() => {
     fetchVacations().catch(console.error);
   }, []);
-  const data = [
-    {
-      start: "2023-12-20T09:00:00.000Z",
-      end: "2023-12-25T17:00:00.000Z",
-      name: "Vacaciones de Laura",
-      color: "#ff7f0e",
-    },
-    {
-      start: "2023-12-05T08:00:00.000Z",
-      end: "2023-12-10T16:00:00.000Z",
-      name: "Vacaciones de Carlos",
-      color: "#2ca02c",
-    },
-    {
-      start: "2024-01-10T09:00:00.000Z",
-      end: "2024-01-15T17:00:00.000Z",
-      name: "Vacaciones de Ana",
-      color: "#17becf",
-    },
-    {
-      start: "2024-02-15T10:00:00.000Z",
-      end: "2024-02-20T18:00:00.000Z",
-      name: "Vacaciones de Pablo",
-      color: "#e377c2",
-    },
-    {
-      start: "2024-03-10T08:00:00.000Z",
-      end: "2024-03-15T16:00:00.000Z",
-      name: "Vacaciones de Isabel",
-      color: "#bcbd22",
-    },
-    {
-      start: "2024-04-05T09:00:00.000Z",
-      end: "2024-04-10T17:00:00.000Z",
-      name: "Vacaciones de José",
-      color: "#ff9896",
-    },
-    {
-      start: "2024-05-20T09:00:00.000Z",
-      end: "2024-05-25T17:00:00.000Z",
-      name: "Vacaciones de Marta",
-      color: "#9467bd",
-    },
-    {
-      start: "2024-06-05T08:00:00.000Z",
-      end: "2024-06-10T16:00:00.000Z",
-      name: "Vacaciones de David",
-      color: "#8c564b",
-    },
-    {
-      start: "2024-07-10T09:00:00.000Z",
-      end: "2024-07-15T17:00:00.000Z",
-      name: "Vacaciones de Carolina",
-      color: "#c49c94",
-    },
-    {
-      start: "2024-08-15T10:00:00.000Z",
-      end: "2024-08-20T18:00:00.000Z",
-      name: "Vacaciones de Andrés",
-      color: "#d62728",
-    },
-  ].map((e) => Object.assign({}, { ...e, start: new Date(e.start), end: new Date(e.end) }));
   return vacations ? (
     <div className="flex flex-col justify-center items-center bg-black space-3">
       <div className="flex justify-between w-full p-2">
@@ -114,7 +52,7 @@ export default function Home() {
               return v.map((e, i) => (
                 //@ts-ignore
                 <div key={i} className="p-6 flex flex-wrap space-y-1 text-sm">
-                  <span className="h-7 bg-blue-500 text-white font-bold py-2 px-4 rounded-full w-40 text-start">
+                  <span className={`h-7 bg-${e.color ?? "blue-500"} text-white font-bold py-2 px-4 rounded-full w-40 text-start`}>
                     {
                       //@ts-ignore
                       e.user.email
