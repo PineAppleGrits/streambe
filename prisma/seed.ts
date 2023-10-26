@@ -2,7 +2,9 @@ import { PrismaClient } from "@prisma/client";
 import { hash } from "bcrypt";
 const prisma = new PrismaClient();
 async function main() {
-  await prisma.user.upsert({
+  try{
+    const user = await prisma.user.findUnique({where: { email: "admin@admin.com" }});
+    if(!user)  await prisma.user.upsert({
     where: { email: "admin@admin.com" },
     //@ts-ignore
     update: {},
@@ -12,7 +14,9 @@ async function main() {
       isAdmin: true,
     },
   });
-}
+  }
+  catch (err){console.error(err)}
+    }
 main()
   .then(async () => {
     await prisma.$disconnect();
