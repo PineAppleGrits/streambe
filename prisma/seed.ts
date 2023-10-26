@@ -3,11 +3,13 @@ import { hash } from "bcrypt";
 const prisma = new PrismaClient();
 async function main() {
   try{
+    //@ts-ignore
     const user = await prisma.user.findUnique({where: { email: "admin@admin.com" }});
     if(!user)  await prisma.user.upsert({
     where: { email: "admin@admin.com" },
     //@ts-ignore
     update: {},
+      //@ts-ignore
     create: {
       email: "admin@admin.com",
       password: await hash("admin1234", 10),
