@@ -52,7 +52,7 @@ export default function Home() {
               return v.map((e, i) => (
                 //@ts-ignore
                 <div key={i} className="p-6 flex flex-wrap space-y-1 text-sm">
-                  <span className={`h-7 bg-${e.color ?? "blue-500"} text-white font-bold py-2 px-4 rounded-full w-40 text-start`}>
+                  <span style={{backgroundColor: e.color}} className={`h-7 text-white font-bold py-2 px-4 rounded-full w-40 text-start`}>
                     {
                       //@ts-ignore
                       e.user.email
